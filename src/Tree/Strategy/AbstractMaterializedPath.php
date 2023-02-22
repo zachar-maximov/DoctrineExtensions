@@ -312,9 +312,9 @@ abstract class AbstractMaterializedPath implements Strategy
         if (!$uow instanceof MongoDBUnitOfWork) {
             $ea->setOriginalObjectProperty($uow, $node, $config['path'], $path);
             $uow->scheduleExtraUpdate($node, $changes);
-        } else {
-            $ea->recomputeSingleObjectChangeSet($uow, $meta, $node);
         }
+        $ea->recomputeSingleObjectChangeSet($uow, $meta, $node);
+
         if (isset($config['path_hash'])) {
             $ea->setOriginalObjectProperty($uow, $node, $config['path_hash'], $pathHash);
         }
